@@ -1,8 +1,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="header.jsp"%>
+
+<c:url var="add_url" value="${todoAddUrl}"/>
+
 <h1>Todo list</h1>
-<form:form modelAttribute="todoForm" method="post"
-	action="${ todoAddUrl }">
+
+<a href="<c:url value="/logout" />">Deconnection</a>
+
+<form:form modelAttribute="todoForm" method="post" action="${add_url}">
 	<form:hidden path="id" />
 		Todo name: <form:input path="name" type="text" />
 	<input type="submit" value="Ok">
@@ -14,8 +19,8 @@
 				<tr>
 					<td><c:out value="${ todo.id }" /></td>
 					<td><c:out value="${ todo.name }" /></td>
-					<td><a href="${ todoDeleteUrl }?id=${todo.id}">delete</a>
-						&nbsp; <a href="${ todoUpdateUrl }?id=${todo.id}">modifier</a>
+					<td><a href="<c:url value="${todoDeleteUrl}?id=${todo.id}"/> ">delete</a>
+						&nbsp; <a href="<c:url value="${ todoUpdateUrl }?id=${todo.id}"/> ">modifier</a>
 					<td>
 				</tr>
 			</c:forEach>

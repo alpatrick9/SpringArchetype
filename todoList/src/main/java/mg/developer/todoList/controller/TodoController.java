@@ -13,11 +13,12 @@ import mg.developer.todoList.models.Todo;
 import mg.developer.todoList.services.TodoServices;
 
 @Controller
+@RequestMapping("/secure")
 public class TodoController {
 
 	private ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 	private TodoServices todoServices = (TodoServices) context.getBean("todoServices");
-
+	
 	@RequestMapping("/")
 	public ModelAndView home(@RequestParam(value = "id", required = false) String id) {
 
@@ -29,8 +30,8 @@ public class TodoController {
 			todoForm = todoServices.findTodo(Integer.parseInt(id));
 		}
 		mv.addObject("todoForm", todoForm);
-		mv.addObject("todoAddUrl", "add_todo");
-		mv.addObject("todoDeleteUrl", "delete_todo");
+		mv.addObject("todoAddUrl", "/secure/add_todo");
+		mv.addObject("todoDeleteUrl", "/secure/delete_todo");
 		mv.addObject("todoUpdateUrl", "");
 		return mv;
 
@@ -43,12 +44,12 @@ public class TodoController {
 		} else {
 			todoServices.updateTodo(todo);
 		}
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/secure/");
 	}
 
 	@RequestMapping(value = "/delete_todo", method = RequestMethod.GET)
 	public ModelAndView deleteTodo(@RequestParam("id") int id) {
 		todoServices.deleteTodo(id);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/secure/");
 	}
 }
