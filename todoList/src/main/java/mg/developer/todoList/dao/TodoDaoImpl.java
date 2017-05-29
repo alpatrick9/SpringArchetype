@@ -11,13 +11,13 @@ import mg.developer.todoList.tools.HibernateUtil;
 
 @Service
 public class TodoDaoImpl implements TodoDao {
-	
+
 	private SessionFactory factory;
-	
+
 	public TodoDaoImpl() {
 		this.factory = HibernateUtil.getSessionFactory();
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Todo> findAll() {
 		Session session = this.factory.openSession();
@@ -26,7 +26,7 @@ public class TodoDaoImpl implements TodoDao {
 		session.clear();
 		return todos;
 	}
-	
+
 	public void create(Todo todo) {
 		Session session = this.factory.openSession();
 		session.beginTransaction();
@@ -34,7 +34,7 @@ public class TodoDaoImpl implements TodoDao {
 		session.getTransaction().commit();
 		session.clear();
 	}
-	
+
 	public void update(Todo todo) {
 		Session session = this.factory.openSession();
 		session.beginTransaction();
@@ -42,7 +42,7 @@ public class TodoDaoImpl implements TodoDao {
 		session.getTransaction().commit();
 		session.clear();
 	}
-	
+
 	public void delete(int id) {
 		Session session = this.factory.openSession();
 		Todo todo = find(id);
@@ -51,7 +51,7 @@ public class TodoDaoImpl implements TodoDao {
 		session.getTransaction().commit();
 		session.clear();
 	}
-	
+
 	public Todo find(int id) {
 		Session session = this.factory.openSession();
 		Todo todo = session.get(Todo.class, id);

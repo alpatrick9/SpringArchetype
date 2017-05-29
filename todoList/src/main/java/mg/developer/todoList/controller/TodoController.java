@@ -14,18 +14,18 @@ import mg.developer.todoList.services.TodoServices;
 
 @Controller
 public class TodoController {
-	
+
 	private ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-	private TodoServices todoServices = (TodoServices)context.getBean("todoServices");
-	
+	private TodoServices todoServices = (TodoServices) context.getBean("todoServices");
+
 	@RequestMapping("/")
 	public ModelAndView home(@RequestParam(value = "id", required = false) String id) {
-		
+
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("todos", todoServices.getAllTodos());
 
 		Todo todoForm = new Todo();
-		if(id != null && !id.isEmpty()) {
+		if (id != null && !id.isEmpty()) {
 			todoForm = todoServices.findTodo(Integer.parseInt(id));
 		}
 		mv.addObject("todoForm", todoForm);
@@ -33,20 +33,20 @@ public class TodoController {
 		mv.addObject("todoDeleteUrl", "delete_todo");
 		mv.addObject("todoUpdateUrl", "");
 		return mv;
-		
+
 	}
-	
-	@RequestMapping(value="/add_todo", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/add_todo", method = RequestMethod.POST)
 	public ModelAndView addTodo(@ModelAttribute("todoForm") Todo todo) {
-		if(todo.getId() == null) {
+		if (todo.getId() == null) {
 			todoServices.createTodo(todo);
 		} else {
 			todoServices.updateTodo(todo);
 		}
 		return new ModelAndView("redirect:/");
 	}
-	
-	@RequestMapping(value="/delete_todo", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/delete_todo", method = RequestMethod.GET)
 	public ModelAndView deleteTodo(@RequestParam("id") int id) {
 		todoServices.deleteTodo(id);
 		return new ModelAndView("redirect:/");

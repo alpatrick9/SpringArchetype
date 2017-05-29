@@ -3,13 +3,13 @@ package mg.developer.todoList.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="todo")
+@Table(name = "todo")
 public class Todo {
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	private String name;
 
 	public Integer getId() {
