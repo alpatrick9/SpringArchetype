@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="../include/header.jsp"%>
 
 <c:url var="add_user_url" value="${addUser}" />
 <div>
-	<%@ include file="../menu.jsp"%>
+	<%@ include file="../include/menu.jsp"%>
 </div>
 
 
@@ -51,4 +51,4 @@
 		</c:forEach>
 	</table>
 </c:if>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../include/footer.jsp"%>

@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="header.jsp"%>
+<%@ include file="include/header.jsp"%>
 
 <c:url var="add_url" value="${todoAddUrl}"/>
 <div>
-	<%@ include file="menu.jsp" %>
+	<%@ include file="include/menu.jsp" %>
 </div>
 <h1>Todo list</h1>
 
@@ -27,4 +27,4 @@
 		</table>
 	</c:if>
 </div>
-<%@ include file="footer.jsp"%>
+<%@ include file="include/footer.jsp"%>
