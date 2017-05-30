@@ -2,10 +2,10 @@
 <%@ include file="header.jsp"%>
 
 <c:url var="add_url" value="${todoAddUrl}"/>
-
+<div>
+	<%@ include file="menu.jsp" %>
+</div>
 <h1>Todo list</h1>
-
-<a href="<c:url value="/logout" />">Deconnection</a>
 
 <form:form modelAttribute="todoForm" method="post" action="${add_url}">
 	<form:hidden path="id" />

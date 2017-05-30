@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Todo {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	private String name;

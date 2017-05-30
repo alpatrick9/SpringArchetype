@@ -9,4 +9,13 @@
 		<constructor-arg index="0" ref="todoDao"/>
 	</bean>
 	
+	<bean id="userDao" class="mg.developer.todoList.dao.UserDaoImpl"/>
+	<bean id="userServices" class="mg.developer.todoList.services.UserServices">
+		<constructor-arg index="0" ref="userDao"/>
+	</bean>
+	
+	<bean id="userRoleDao" class="mg.developer.todoList.dao.UserRoleDaoImpl"/>
+	<bean id="userRoleServices" class="mg.developer.todoList.services.UserRoleServices">
+		<constructor-arg index="0" ref="userRoleDao"></constructor-arg>
+	</bean>
 </beans> 
