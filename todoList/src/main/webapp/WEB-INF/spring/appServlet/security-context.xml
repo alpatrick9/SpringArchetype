@@ -20,6 +20,7 @@
 	
 	<authentication-manager>
 	  <authentication-provider>
+	  	<password-encoder ref="encoder"/>
 		<jdbc-user-service data-source-ref="dataSource"
 		  users-by-username-query=
 		    "select username,password, enabled from users where username=?"
@@ -27,5 +28,5 @@
 		    "select username, role from user_roles where username =?  " />
 	  </authentication-provider>
 	</authentication-manager>
-
+	
 </beans:beans>

@@ -2,6 +2,9 @@ package mg.developer.todoList.models;
 
 import javax.persistence.*;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Entity
 @Table(name = "users" )
 public class User {
@@ -29,7 +32,8 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.password = passwordEncoder.encode(password);
 	}
 
 	public boolean isEnabled() {
