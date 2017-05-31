@@ -4,5 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-	
+	<bean class="mg.developer.todoList.listener.LoggedUserListener"> </bean>
 </beans>

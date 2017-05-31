@@ -30,3 +30,4 @@ li a:hover {
 </style>
 </head>
 <body>
+<h2>Connecter en tant que: ${sessionScope.username }</h2>
