@@ -13,7 +13,8 @@ public class LoginController {
 	@RequestMapping("/login")
 	public ModelAndView loginForm(
 			@RequestParam(value="error", required=false, defaultValue="false") boolean error,
-			@RequestParam(value="logout", required=false, defaultValue="false") boolean logout) {
+			@RequestParam(value="logout", required=false, defaultValue="false") boolean logout,
+			HttpSession session) {
 		ModelAndView loginForm = new ModelAndView("/login");
 		loginForm.addObject("error", error);
 		loginForm.addObject("logout", logout);
